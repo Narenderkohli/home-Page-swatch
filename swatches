@@ -1,0 +1,63 @@
+    =========================
+    html code
+    ====================
+    
+    
+    <variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{  }}" {{ block.shopify_attributes }}>
+
+        {%- for option in card_product.options_with_values -%}
+
+        {% if card_product.options[forloop.index0] == 'Color' %}
+        <fieldset class="js product-form__input">
+          <legend class="form__label a">{{ option.name }}: {{ value }}</legend>
+          <div class="in_lab">
+          {%- for value in option.values -%}
+          
+          
+            
+            {%- for variant in card_product.variants -%}
+            
+            {% if value == variant.title %}
+            
+            <span style="display: inline-block;border-radius: 50%;width: 20px;height: 20px;background-color: {{ value | split: ' ' | first | handle }} !important; background-image: url({{ value | handle | append: '.png' | asset_url }})" data-img="{{ variant.image.src | img_url: 'master' }}"></span>
+            
+            {% endif %}
+            
+            {% endfor %}
+                
+          {%- endfor -%}
+          </div>
+        </fieldset>
+           
+              
+               
+        {%- endif -%}
+        {%- endfor -%}
+
+      </variant-radios>
+      
+      ==========================
+      end
+      ================
+      
+      =====================
+      js code 
+      ================
+      
+      $('.in_lab span').click(function(){
+
+    var imagee = $(this).attr('data-img');
+    var parent = $(this).parents('.card-wrapper');
+
+//     console.log(parent.html());
+
+    var  image_tag = parent.find('.card__media').find('img.motion-reduce');
+  
+//   console.log('src:  '+ image_tag.attr('src'));
+
+    image_tag.attr('src',imagee);
+  image_tag.attr('srcset',imagee);
+    
+    
+});
+      ================
