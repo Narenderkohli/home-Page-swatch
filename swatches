@@ -19,7 +19,9 @@
             
             {% if value == variant.title %}
             
-            <span style="display: inline-block;border-radius: 50%;width: 20px;height: 20px;background-color: {{ value | split: ' ' | first | handle }} !important; background-image: url({{ value | handle | append: '.png' | asset_url }})" data-img="{{ variant.image.src | img_url: 'master' }}"></span>
+            <span style="display: inline-block;border-radius: 50%;width: 20px;height: 20px;background-color: 
+            {{ value | split: ' ' | first | handle }} !important; background-image: url({{ value | handle |
+            append: '.png' | asset_url }})" data-img="{{ variant.image.src | img_url: 'master' }}"></span>
             
             {% endif %}
             
